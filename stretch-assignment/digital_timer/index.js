@@ -4,7 +4,13 @@ let secondTens = document.getElementById("secondTens");
 let secondOnes = document.getElementById("secondOnes");
 let msHundreds = document.getElementById("msHundreds");
 let msTens = document.getElementById("msTens");
+let startButton = document.getElementById("start");
+
+
 secondTens.textContent = 0;
+secondOnes.textContent = 0;
+msHundreds.textContent = 0;
+msTens.textContent = 0;
 function update(){//when called upates the milisecond number by 1
     timer += 0.01;
     let arr = [...timer + ''].map((i) => { return Number(i); })
@@ -25,7 +31,16 @@ function update(){//when called upates the milisecond number by 1
     
 }
 
+startButton.addEventListener("click", start);
+
 function start(){
-    interval = setInterval(update, 10);
+    clearInterval(interval);
+    if(timer === 0.00){
+        interval = setInterval(update, 10);
+    }
+    else{
+        timer = 0.00;
+        msTens.parentElement.style.color = "black";
+        interval = setInterval(update, 10);
+    }
 }
-start();
