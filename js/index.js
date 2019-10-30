@@ -39,4 +39,31 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
+
+let nav = document.querySelectorAll('a');
+let nav_info = Object.values(siteContent.nav);//converts nav into an array so i can get the value using the index allowing me to do it all in one for loop.
+for(i = 0; i < nav.length; i++){
+  nav[i].textContent = nav_info[i]; 
+}
+
+let main = document.querySelector(".cta-text").children;
+let main_info = Object.values(siteContent.cta);
+for(i = 0; i < main.length; i++){
+  main[i].textContent = main_info[i];
+}
+let main_logo = document.getElementById("cta-img");
+main_logo.setAttribute("src", siteContent.cta["img-src"]);
+
+let content = document.querySelectorAll(".main-content > div > div > h4, .main-content > div > div > p, .main-content > img");
+let info = Object.values(siteContent["main-content"]);
+for(i = 0; i < content.length; i++){
+  if(content[i].tagName.toLocaleLowerCase() === "img"){
+    content[i].setAttribute("src", info[i]);
+  }
+  else{
+    content[i].textContent = info[i];
+  }
+}
+
+
