@@ -1,4 +1,4 @@
-let timer = 0.00;
+let timer = 0;
 let interval = null;
 let numbers = [
     document.getElementById("msHundreds"),
@@ -11,7 +11,7 @@ let startButton = document.getElementById("start");
 let resetButton = document.getElementById("reset");
 
 function update(){//when called upates the milisecond number by 1
-    timer += 1;
+    timer += 1; 200 
     let numberArr = [...timer + ''].reverse();
     numberArr.forEach((i, index) => numbers[index].textContent = i);
     if(timer === 1000){
@@ -20,8 +20,10 @@ function update(){//when called upates the milisecond number by 1
         return;
     }
 }
+
 startButton.addEventListener("click", start);
 resetButton.addEventListener("click", reset);
+
 function start(){
     startButton.disabled = true;
     interval = setInterval(update, 10);
